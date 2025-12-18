@@ -1,6 +1,6 @@
 #include <stack>
-#include <cstudio>
-#include <cstlib>
+#include <cstdio>
+#include <cstdlib>
 
 using std::stack;
 using std::printf;
@@ -16,14 +16,14 @@ calc is using prefix notation, profix stacking equations
 
 int addition_on_numbers(stack<int> st,int op) {
     if(op == 9999) {
-        Printf("we see another addition");
+        printf("we see another addition");
         return 0;
     }
     else {
         // numbers
         printf("your result is %d", (op + st.top()));
         st.pop();
-        return 0
+        return 0;
     }
 }
 
