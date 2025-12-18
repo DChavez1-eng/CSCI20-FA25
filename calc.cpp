@@ -1,6 +1,7 @@
 #include <stack>
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
 
 using std::stack;
 using std::printf;
@@ -14,16 +15,19 @@ calc is using prefix notation, profix stacking equations
             => not +11+
 */
 
-int addition_on_numbers(stack<int> st,int op) {
+stack<int> addition_on_numbers(stack<int>& st, int op) {
     if(op == 9999) {
+        int new_op = st.top();
+        st.pop();
+        addition_on_numbers(st, new_op);
         printf("we see another addition");
-        return 0;
+        return ;
     }
     else {
         // numbers
         printf("your result is %d", (op + st.top()));
         st.pop();
-        return 0;
+        return ;
     }
 }
 
@@ -45,8 +49,8 @@ int main() {
     stack<int> st;
 
     // push the equation +11
-    st.push(5);
-    st.push(5);
+    st.push(1);
+    st.push(1);
     st.push(9999);
 
     // we know that 9999 = +
@@ -55,6 +59,12 @@ int main() {
     int op = st.top();
     st.pop();
     choice(st, op);
+
+    for (int i = 0; i < 10; i++) {
+        std::cout << "9999:" << i << std::endl;
+    }
+        
+    
 
     return 0;
 }
